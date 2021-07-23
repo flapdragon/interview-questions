@@ -7,7 +7,7 @@ const rotate2d = function(matrix) {
   matrix[matrixSize-1].reverse();
   let flattened = [].concat.apply([], matrix);
   flattened = flattened.concat(flattened.splice(0, matrixSize + 1)); // Shift left 3 to shift right once
-  const rotated = [ flattened.slice(0, matrixSize), flattened.slice(matrixSize, matrixSize + matrixSize) ];
+  const rotated = [ flattened.slice(0, matrixSize), flattened.slice(matrixSize, matrixSize + matrixSize).reverse() ];
   return rotated;
 }
 
