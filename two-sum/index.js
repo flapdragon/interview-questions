@@ -1,25 +1,25 @@
 // If array has unique members then put into set/object, then loop once and do a set search for difference
 // O(n)
-const twosum = function(nums, target) {
-  const numlen = nums.length;
-  let numObject = {};
-	for (let i = 0; i < numlen; i++) {
+// Is this really O(n)? We are only talking about our own code but what about hasOwnProperty?
+const twoSum = function(nums, target) {
+  const L = nums.length;
+  let intObject = {};
+	for (let i = 0; i < L; i++) {
 		let thisNum = nums[i];
-		numObject[thisNum] = i;
+		intObject[thisNum] = i;
   }
-  for (let i = 0; i < numlen; i++) {
-    // console.log("i=" + i, "nums[i]=" + nums[i]);
+  for (let i = 0; i < L; i++) {
     const diff = target - nums[i];
-    if (numObject.hasOwnProperty(diff) && numObject[diff] !== i) {
-      return [i, numObject[diff]];
+    if (intObject.hasOwnProperty(diff) && intObject[diff] !== i) {
+      return [i, intObject[diff]];
   	}
   }
 }
 
 // Tests
-console.log(twosum([2,7,11,15], 9));
-console.log(twosum([3,2,4], 6));
-console.log(twosum([3,3], 6));
+console.log(twoSum([2,7,11,15], 9));
+console.log(twoSum([3,2,4], 6));
+console.log(twoSum([3,3], 6));
 
 // Notes
 // For this solution they don't mention that the integer values of the arry must be unique
