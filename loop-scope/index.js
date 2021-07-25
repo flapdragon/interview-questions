@@ -109,7 +109,7 @@ console.log(typeof k2 !== 'undefined' ? 'k2 is defined outside the loop and k2='
 // Code inside the loop, between the {}s, is the same scope as the loop declaration itself, for (...).
 
 // Conclusion
-// In JavaScript, no loop provides block scope and all loops are the same in this regard.
+// In JavaScript, no loop provides block scope and all loops are the same in this regard, including the new ones introduced in ES6 - which makes sense for consistency's sake.
 // Loop operations such as break and continue have effect on this fact.
 // Only let and const have any impact and those keywords are always scoped to the current block, in this case the loop, and not the parent scope. This is because of the way const and let work and has nothing to do with loops whatsoever.
 // var is scoped to the parent context.
