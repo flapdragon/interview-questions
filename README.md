@@ -17,13 +17,13 @@
 
 
 ## Concepts
-These are concepts I believe every developer should be familiar with. I have asked other people about these concepts in interviews and I myself have been asked about them as well. They are ones I personally believe people should know, fundamental ones, but also ones junior developers have asked me about.
+These are concepts I believe every developer should be familiar with. I have asked other developers to explain their understanding of these concepts in interviews I have given and I myself have been asked about them as well in my own interviews. They are fundamental and common concepts that any developer will encounter as well as ones junior developers have asked me about.
 |Problem|Solution|
 |---|---|
 |[JavaScript Loop Scope](https://github.com/flapdragon/interview-questions/tree/main/loop-scope)|[Solutions](loop-scope)|
 
 ## Actual Interview Questions
-These are actual problems I was asked to solve in interviews.
+These are actual problems I have been asked to solve in interviews.
 |Problem|Solution|
 |---|---|
 |[Find Seat Across](https://github.com/flapdragon/interview-questions/tree/main/find-seat-across)|[Solutions](find-seat-across)|
