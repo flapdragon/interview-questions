@@ -1,6 +1,6 @@
 # Interview Questions
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/flapdragon/hackerrank.svg)](https://github.com/flapdragon/interview-questions/commits/master)
+[![GitHub last commit](https://img.shields.io/github/last-commit/flapdragon/Interview-Questions.svg)](https://github.com/flapdragon/interview-questions/commits/master)
 [![License](https://img.shields.io/github/license/flapdragon/interview-questions.svg)](https://github.com/flapdragon/interview-questions/blob/master/LICENSE)
 [![Languages count](https://img.shields.io/github/languages/count/flapdragon/Interview-Questions.svg)]()
 [![Top Language](https://img.shields.io/github/languages/top/flapdragon/Interview-Questions.svg)]()
