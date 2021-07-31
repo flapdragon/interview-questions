@@ -16,5 +16,5 @@ We're assuming a market order buy, no short sells. Also, you know this isn't how
 ```
 prices = [14,3,9,7,10,3]
 Maximum profit: 7
-Buy on index 1 / day 2 at 3 and sell on index 4 / day 5 at 10, 10 - 3 = 7.
+Buy on index 1 / day 2 at 3 and sell on index 4 / day 5 at 10, 10 - 3 = 7 ... brapples.
 ```
