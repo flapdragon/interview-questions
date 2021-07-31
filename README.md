@@ -36,3 +36,4 @@ These are actual problems I have been asked to solve in interviews.
 |Problem|Solution|
 |---|---|
 |[Find Seat Across](https://github.com/flapdragon/interview-questions/tree/main/find-seat-across)|[Solutions](find-seat-across)|
+|[Build 1 String from 2](https://github.com/flapdragon/interview-questions/tree/main/string-builder)|[Solutions](string-builder)|
