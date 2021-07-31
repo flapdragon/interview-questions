@@ -4,7 +4,7 @@ function twoStrings(a, b) {
   for (let i = 0, len = a.length; i < len; i++) {
     // str += a.substring(i, i+1) + b.substring(2*i, 2*i+2);
     // str += a[i] + b[2*i] + b[2*i+1];
-    // str += a.slice(i, i+1) + b.slice(2*i, 2*i+2);
+    // str += a.slice(i, i+1) + b.slice(2*i, 2*i+2); // Second fastest
     str = str.concat(a.slice(i, i+1) + b.slice(2*i, 2*i+2)); // Fastest
     // str += a.charAt(i) + b.charAt(2*i) + b.charAt(2*i+1);
   }
@@ -16,9 +16,9 @@ function twoStrings(a, b) {
 function twoStringsRogueArray(a, b) {
   let str = []; // Not a string haha
   for (let i = 0, len = a.length; i < len; i++) {
-    // str.push(a.slice(i, i+1) + b.slice(2*i, 2*i+2)); // So slow but the fastest array method by orders of magnitude
+    str.push(a.slice(i, i+1) + b.slice(2*i, 2*i+2)); // So slow but the fastest array method by orders of magnitude
     // str = [ ...str, a.slice(i, i+1), b.slice(2*i, 2*i+2)]; // Dogshit slow
-    str = str.concat(a.slice(i, i+1), b.slice(2*i, 2*i+2)); // Surprisingly the slowest by far
+    // str = str.concat(a.slice(i, i+1), b.slice(2*i, 2*i+2)); // Surprisingly the slowest by far. What happened, Array.prototype.concat(?)
   }
   return str.join(''); // Haha it was a string the whole time!
 }
