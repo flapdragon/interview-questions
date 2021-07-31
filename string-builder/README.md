@@ -1,10 +1,12 @@
 
 # Build a String Based on 2 Other Strings
 
-**Problem**\
-Given two strings, build a new string that takes one character at a time from the first string and two characters at a time from the second string.\
+**Problem**
 
-**Example:**\
+Given two strings, build a new string that takes one character at a time from the first string and two characters at a time from the second string.
+
+**Example:**
+
 ```
 let s1 = 'abcd', s2 = '12345678';
 // Resulting string: a12b34c56d78
