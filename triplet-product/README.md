@@ -9,12 +9,11 @@ Given an integer array, find a maximum product of a triplet, any 3 members, in a
 **Examples:**
 ```
 Input:  [10, 3, 5, 6, 20]
-Output: 1200
-Multiplication of 10, 6 and 20
+Output: 10 * 6 * 20 = 1200
 
 Input:  [-10, -3, -5, -6, -20]
-Output: -90
+Output: -3 * -5 * -6 = -90
 
 Input:  [1, -4, 3, -6, 7, 0]
-Output: 168
+Output: -4 * -6 * 7 = 168
 ```
