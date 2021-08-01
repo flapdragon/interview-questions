@@ -38,6 +38,29 @@ function bruteForce(arr) {
   return maximumProduct;
 }
 
+// Good ol' sort. Slow and steady wins the race. What's that? The race is over already?
+// I am sorting once to get the case where 3 positives are the highest (descending),
+// then again if 3 negatives are the highest (ascending),
+// then a final time with absolute values which should cover all cases where there are 2 negatives and 1 positive that are the highest.
+// One of the three will be the highest.
+// As expected this is much slower than brute force, about 45% of the speed of O(n³). Trombone goes wah wah wah.
+function bruteSort(arr) {
+  // Default array to product of 1st 3 integers like we agreed upon.
+  let maximumProduct = arr[0] * arr[1] * arr[2];
+  const descending = arr.sort((a, b) => b - a),
+    descendingProduct = descending[0] * descending[1] * descending[2],
+    ascending = arr.sort((a, b) => a - b),
+    asscendingProduct = ascending[0] * ascending[1] * ascending[2],
+    absoluteDescending = arr.sort((a, b) => Math.abs(b) - Math.abs(a)),
+    absoluteDescendingProduct = absoluteDescending[0] * absoluteDescending[1] * absoluteDescending[2];
+  maximumProduct = Math.max(descendingProduct, asscendingProduct, absoluteDescendingProduct);
+  return maximumProduct;
+}
+
+// Tests
 console.log(bruteForce([10, 3, 5, 6, 20]));
 console.log(bruteForce([-10, -3, -5, -6, -20]));
 console.log(bruteForce([1, -4, 3, -6, 7, 0]));
+console.log(bruteSort([10, 3, 5, 6, 20]));
+console.log(bruteSort([-10, -3, -5, -6, -20]));
+console.log(bruteSort([1, -4, 3, -6, 7, 0]));
