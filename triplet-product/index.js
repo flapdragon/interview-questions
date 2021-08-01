@@ -17,12 +17,13 @@
 // since it never gets put up.
 
 // Why loop once when you can have three nested loops?
-// Brute force in this case means one loop for every number of the triplet so 3 nested loops, O(n³).
+// Brute force in this case means multiplying every number times every other number in sets of 3. 1, 2, 3; 2, 3, 4; 3, 4, 5; etc.
+// and one loop for every number of the triplet so 3 nested loops, O(n³).
 // By golly n to the third power sounds bad.
 function bruteForce(arr) {
   // We can't default to 0 because of the possible negative value maximums.
   // We don't want to default to undefined or null because then we would have to run a check in every loop.
-  // Just hard code it?
+  // Just hard code it? Yeah.
   let maximumProduct = arr[0] * arr[1] * arr[2];
   for (let i = 0, iLen = arr.length-2; i < iLen; i++) {
     for (let j = i+1, jLen = arr.length-1; j < jLen; j++) {
