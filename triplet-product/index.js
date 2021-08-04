@@ -2,7 +2,6 @@
 // Given an integer array, find a maximum product of a triplet, any 3 members, in an array.
 // Rules
 // Input array must be positive and/or negative integers.
-// You must multiply 3 unique array members to get the answer.
 // The answer must be the highest possible product of 3 numbers.
 
 // Use cases
@@ -66,13 +65,15 @@ function bruteSort(arr) {
 // However doubling the loop size then indeed it does rapidly start becoming faster, by a lot.
 // For just double the size of an array with length 10 it consistently went to about 20-25% faster.
 // So the upside is only 1 loop, the downside is all the additional logic which isn't nearly as maintainable as well as all the extra variables.
+// In this solution for the negative numbers only use case, I created a whole section of variables and if statements for them,
+// rather than treating them like a normal max value set, which they are.
 function shaveApe(arr) {
   let pos1 = 0,
     pos2 = 0,
-    pos3 = 0,
+    pos3 = 0, // highest
     lowNeg1 = 0,
-    lowNeg2 = 0,
-    highNeg1 = -1000000,
+    lowNeg2 = 0, // lowest
+    highNeg1 = -1000000, // highest negative number
     highNeg2 = -1000000,
     highNeg3 = -1000000;
   for (let i = 0, len = arr.length; i < len; i++) {
@@ -119,8 +120,59 @@ function shaveApe(arr) {
   }
 }
 
+// My final function, looping once O(n) and only keeping track of 3 maxes and 2 mins, which is where I started until I realized I need
+// to deal with the all negatives and made the solution shavedApe above. Eventually I realized that they can be treated like regular maxes.
+// Also switched the order of the maxes. It was 1, 2, 3 ascending in value now it's descending.
+// Also I added the = signs in case some numbers are repeated, which I had completely forgot about.
+function highestProduct(arr) {
+  let max1 = -1000000, // highest number
+    max2 = -1000000,
+    max3 = -1000000,
+    min1 = 1000000,
+    min2 = 1000000; // lowest number
+  for (let i = 0, len = arr.length; i < len; i++) {
+    // Max values
+    if (arr[i] >= max1) {
+      max3 = max2;
+      max2 = max1;
+      max1 = arr[i];
+    }
+    else if (arr[i] >= max2) {
+      max3 = max2;
+      max2 = arr[i];
+    }
+    else if (arr[i] >= max3) {
+      max3 = arr[i];
+    }
+    // Min values
+    if (arr[i] <= min2) {
+      min1 = min2;
+      min2 = arr[i];
+    }
+    else if (arr[i] <= min1) {
+      min1 = arr[i];
+    }
+  }
+  return Math.max((max1 * max2 * max3), (max1 * min1 * min2));
+}
+
+// What I learned
+// The main thing I learned is that there are a ton of answers to this problem out there that just don't work.
+// They've fallen for one of the classic blunders, the most famous of which is never get involved in a land war in Asia,
+// but only slightly less well known, make sure you have identified all the use cases and have tests to make sure your code works for each of them.
+// The case of the all negative array was almost completely ignored in the wild.
+// Also JavaScript answers tended to be pretty bad, but you could tell they weren't written by front end developers.
+// Some other things I reinforced were brute force nested loops don't scale well but they aren't always the worst performing solutions.
+// Also reinforced just how slow array sort is. Man. Doesn't really scale either, but better than O(n³). Barely. I'm just saying it shouldn't be barely. Right?
+// Also starting to appreciate that trading some time for complexity and space helps performance a lot more than I realized.
+
 // Tests
-console.log(shaveApe([10, 3, 5, 6, 20]));
-console.log(shaveApe([-10, -3, -5, -6, -20]));
-console.log(shaveApe([-10, -3, -5, -6, -20, 0]));
-console.log(shaveApe([1, -4, 3, -6, 7, 0]));
+console.log(highestProduct([10, 3, 5, 6, 20]));
+console.log(highestProduct([10, 3, 5, 6, 20, 30, 40, 50]));
+console.log(highestProduct([-10, -3, -5, -6, -20]));
+console.log(highestProduct([-10, -3, -5, -6, -20, 0]));
+console.log(highestProduct([1, -4, 3, -6, 7, 0]));
+
+// Notes
+// https://www.rottentomatoes.com/m/princess_bride/quotes/
+// https://en.wikipedia.org/wiki/Greedy_algorithm
