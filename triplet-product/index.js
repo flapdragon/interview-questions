@@ -1,3 +1,5 @@
+// Problem
+// Given an integer array, find a maximum product of a triplet, any 3 members, in an array.
 // Rules
 // Input array must be positive and/or negative integers.
 // You must multiply 3 unique array members to get the answer.
@@ -12,6 +14,7 @@
 // 4. If all numbers are negative you have to pick the smallest numbers.
 
 // Theorems
+// If what we are doing is getting the highest product then what we are really doing is finding the three largest numbers, possibly including 2 absolute ones.
 // I'm assuming sorting is going to be slow, because it's been slow in the past. Folks we can't get fooled again.
 // So I'll dust off brute force. Just kidding it's not dusty. It's not even put up yet. In fact there is no place to put it
 // since it never gets put up.
@@ -44,6 +47,7 @@ function bruteForce(arr) {
 // then a final time with absolute values which should cover all cases where there are 2 negatives and 1 positive that are the highest.
 // One of the three will be the highest.
 // As expected this is much slower than brute force, about 45% of the speed of O(n³). Trombone goes wah wah wah.
+// Sorting is supposed to be O(nlogn) but since I am sorting 3 times maybe it's O(nlogn³).
 function bruteSort(arr) {
   // Default array to product of 1st 3 integers like we agreed upon.
   let maximumProduct = arr[0] * arr[1] * arr[2];
@@ -57,6 +61,64 @@ function bruteSort(arr) {
   return maximumProduct;
 }
 
+// Loop only once, O(n) and find the highest numbers since that's what we're looking for.
+// This is consistently faster than bruteForce O(n³) but not by a ton for small arrays like the examples, about 5%.
+// However doubling the loop size then indeed it does rapidly start becoming faster, by a lot.
+// For just double the size of an array with length 10 it consistently went to about 20-25% faster.
+// So the upside is only 1 loop, the downside is all the additional logic which isn't nearly as maintainable as well as all the extra variables.
+function shaveApe(arr) {
+  let pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    lowNeg1 = 0,
+    lowNeg2 = 0,
+    highNeg1 = -1000000,
+    highNeg2 = -1000000,
+    highNeg3 = -1000000;
+  for (let i = 0, len = arr.length; i < len; i++) {
+    // Positives
+    if (arr[i] > pos3) {
+      pos1 = pos2;
+      pos2 = pos3;
+      pos3 = arr[i];
+    }
+    else if (arr[i] < pos3 && arr[i] > pos2) {
+      pos1 = pos2;
+      pos2 = arr[i];
+    }
+    else if (arr[i] < pos2 && arr[i] > pos1) {
+      pos1 = arr[i];
+    }
+    // Low neagtives
+    if (arr[i] < lowNeg2) {
+      lowNeg1 = lowNeg2;
+      lowNeg2 = arr[i];
+    }
+    else if (arr[i] > lowNeg2 && arr[i] < lowNeg1) {
+      lowNeg1 = arr[i];
+    }
+    // The highest negatives for when there are no positve numbers but no we are not checking if there are no positives.
+    if (arr[i] > highNeg1 && arr[i] < 0) {
+      highNeg3 = highNeg2;
+      highNeg2 = highNeg1;
+      highNeg1 = arr[i];
+    }
+    else if (arr[i] < highNeg1 && arr[i] > highNeg2) {
+      highNeg3 = highNeg2;
+      highNeg2 = arr[i];
+    }
+    else if (arr[i] < highNeg2 && arr[i] > highNeg3) {
+      highNeg3 = arr[i];
+    }
+  }
+  if (pos1 + pos2 + pos3 === 0) {
+    return highNeg1 * highNeg2 * highNeg3;
+  }
+  else {
+    return Math.max((pos1 * pos2 * pos3), (pos3 * lowNeg1 * lowNeg2));
+  }
+}
+
 // Tests
 console.log(bruteForce([10, 3, 5, 6, 20]));
 console.log(bruteForce([-10, -3, -5, -6, -20]));
@@ -64,3 +126,6 @@ console.log(bruteForce([1, -4, 3, -6, 7, 0]));
 console.log(bruteSort([10, 3, 5, 6, 20]));
 console.log(bruteSort([-10, -3, -5, -6, -20]));
 console.log(bruteSort([1, -4, 3, -6, 7, 0]));
+console.log(shaveApe([10, 3, 5, 6, 20]));
+console.log(shaveApe([-10, -3, -5, -6, -20]));
+console.log(shaveApe([1, -4, 3, -6, 7, 0]));
