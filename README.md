@@ -22,6 +22,9 @@ These are the famous programming problems. You don't get them asked in JavaScrip
 |[Rotate Matrix](http://theoryofprogramming.com/2017/12/31/rotate-matrix-clockwise/)|[Solutions](rotate-matrix)|
 |[Zero Matrix](https://leetcode.com/problems/set-matrix-zeroes/)|[Solutions](zero-matrix)|
 |[Fibonacci Series](https://en.wikipedia.org/wiki/Fibonacci_number)|[Solutions](fibonacci-series)|
+|Longest Increasing Subsequence|Solutions|
+|[Buy and Sell Stock](https://en.wikipedia.org/wiki/Fibonacci_number)|[Solutions](buy-sell-stock)|
+|[Maximum Product of Triplet](https://www.geeksforgeeks.org/find-maximum-product-of-a-triplet-in-array/)|[Solutions](triplet-product)|
 
 
 ## Concepts
