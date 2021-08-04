@@ -98,7 +98,7 @@ function shaveApe(arr) {
       lowNeg1 = arr[i];
     }
     // The highest negatives for when there are no positve numbers but no we are not checking if there are no positives.
-    if (arr[i] > highNeg1 && arr[i] < 0) {
+    if (arr[i] > highNeg1 && arr[i] <= 0) {
       highNeg3 = highNeg2;
       highNeg2 = highNeg1;
       highNeg1 = arr[i];
@@ -120,12 +120,7 @@ function shaveApe(arr) {
 }
 
 // Tests
-console.log(bruteForce([10, 3, 5, 6, 20]));
-console.log(bruteForce([-10, -3, -5, -6, -20]));
-console.log(bruteForce([1, -4, 3, -6, 7, 0]));
-console.log(bruteSort([10, 3, 5, 6, 20]));
-console.log(bruteSort([-10, -3, -5, -6, -20]));
-console.log(bruteSort([1, -4, 3, -6, 7, 0]));
 console.log(shaveApe([10, 3, 5, 6, 20]));
 console.log(shaveApe([-10, -3, -5, -6, -20]));
+console.log(shaveApe([-10, -3, -5, -6, -20, 0]));
 console.log(shaveApe([1, -4, 3, -6, 7, 0]));
