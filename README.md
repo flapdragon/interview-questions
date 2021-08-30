@@ -25,6 +25,7 @@ These are the famous programming problems. You don't get them asked in JavaScrip
 |Longest Increasing Subsequence|Solutions|
 |[Buy and Sell Stock](https://en.wikipedia.org/wiki/Fibonacci_number)|[Solutions](buy-sell-stock)|
 |[Maximum Product of Triplet](https://www.geeksforgeeks.org/find-maximum-product-of-a-triplet-in-array/)|[Solutions](triplet-product)|
+|[Palindrome Permutation](https://www.lintcode.com/problem/916/)|[Solutions](palindrome-permutation)|
 
 
 ## Concepts
