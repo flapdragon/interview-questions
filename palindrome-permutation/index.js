@@ -90,3 +90,4 @@ console.log(hasPalindrome2("tacocat"));
 // https://stackoverflow.com/a/5016327/5293704
 // Solution 2
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+// Did you know that you can click on the rocket progress bar on https://jsben.ch/ and it will change it to where you clicked? It was slow and I got bored.
