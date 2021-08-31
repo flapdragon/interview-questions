@@ -1,6 +1,6 @@
 # Longest Consecutive Sequence
 
-Given an unsorted array of integers, return the length of the longest consecutive integer sequence.
+Given an unsorted array of integers, return the length of the longest consecutive integer sub-sequence.
 
  - Input numbers must be integers and can be negative, 0 or positive. You know, integers.
 
