@@ -22,14 +22,13 @@
 // I am getting the list of unique letters, then looping over that (damnit) and counting using regex and adding the odd ones to an array.
 // If the array reaches length 2 then return falsey.
 
+// 1. Original no look solution
 function hasPalindrome(str) {
   const uniques = String.prototype.concat(...new Set(str));
-  // Ok I'm looping
   let odds = [];
   for (let i = 0, len = uniques.length; i < len; i++) {
     const pattern = new RegExp(uniques[i], 'g');
     const count = (str.match(pattern) || []).length;
-    // console.log(uniques[i], pattern, count, str.match(/a/g));
     if (count % 2) {
       odds.push(count);
     }
@@ -40,9 +39,7 @@ function hasPalindrome(str) {
   return true;
 }
 
-// What I learned
-
-// Tests
+// 1. Tests
 console.log(hasPalindrome("aab"));
 console.log(hasPalindrome("abccccba"));
 console.log(hasPalindrome("abc"));
@@ -51,7 +48,45 @@ console.log(hasPalindrome("aabbccdd"));
 console.log(hasPalindrome("code"));
 console.log(hasPalindrome("tacocat"));
 
+// 2. Looked up solution
+// Iterate over original string one character at a time
+// Create a new string/array to store characters. If current character in loop is in new set, then remove it from new set. Otherwise add it.
+// At the end check for the length of the set. It should be 0 or 1, <= 1.
+function hasPalindrome2(str) {
+  let charSet = [];
+  for (let i = 0, len = str.length; i < len; i++) {
+    const letter = str[i];
+    const letterIndex = charSet.indexOf(letter);
+    if (letterIndex > -1) {
+      charSet.splice(letterIndex, 1);
+    }
+    else {
+      charSet.push(str[i]);
+    }
+  }
+  return charSet.length <= 1;
+}
+
+// 2. Tests
+console.log("------------------------------------");
+console.log(hasPalindrome2("aab"));
+console.log(hasPalindrome2("abccccba"));
+console.log(hasPalindrome2("abc"));
+console.log(hasPalindrome2("abccccbd"));
+console.log(hasPalindrome2("aabbccdd"));
+console.log(hasPalindrome2("code"));
+console.log(hasPalindrome2("tacocat"));
+
+// What I learned
+// Even though I didn't loop over the original set I still created a unique set from it, which is just as expensive, and the looped over the new set and then counted instances of memebers of the new set
+// in the old set, basically looping and even more expensive. I need to remember how some of these methods work and that many of them also loop to do their job.
+// Iterating once like solution 2 and then doing actions on the new smaller set is much cheaper.
+// I haven't done one of these in 3 weeks so I'm not going to be hard on myself. Literally forgot this was my issue every time before though lol. I remember now.
+
 // Notes
 // https://www.lintcode.com/problem/916/
+// Solution 1
 // https://stackoverflow.com/a/37932364/5293704
 // https://stackoverflow.com/a/5016327/5293704
+// Solution 2
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
