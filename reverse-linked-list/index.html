@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Reverse a Linked List - Now in JavaScript!</title>
+  <style>
+    .content {
+      margin: 10px 0 0 20px;
+      font-family: Verdana,Geneva,sans-serif;
+      width: 900px;
+    }
+    pre {
+      padding: 20px;
+      font-size: 16px;
+      background-color: #e0e0e0;
+    }
+    li {
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Reverse a Linked List</h1>
+    <p>Reverse a linked list. Do it in place and in one pass.</p>
+    <ul>
+      <li>JavaScript doesn't have this datatype but we can imitate it with a simple object with each next list member being nested in the previous object.</li>
+      <li>The first and outermost object is the head.</li>
+      <li>Each item should have 2 attributes, data and next.</li>
+    </ul>
+    <p><strong>Basic Examples:</strong></p>
+    <pre>
+Input: { head: { data: 1, next: { data: 2, next: { data: 3, next: { data: 4, next: null } } } } }
+Output: { head: { data: 4, next: { data: 3, next: { data: 2, next: { data: 1, next: null } } } } }
+    </pre>
+  </div>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
