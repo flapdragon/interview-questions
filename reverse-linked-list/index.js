@@ -10,26 +10,27 @@
 // objects is usually a lot slower than creating new ones based on the original. I want to compare the performance of mutable vs immutable at the end.
 // Also, just creating a new one as you go is significantly easier.
 
-// Solution 0: Immutable Force
-// This is for comparison.
-const llMostlyImmutable = function(linkedList) {
-  let currentObject = linkedList.head;
-  let previousObject = { data: currentObject.data, next: null };
-  let tempObject = {};
-  while (currentObject.hasOwnProperty('next') && currentObject.next !== null) {
-    tempObject = { ...previousObject };
-    currentObject = { ...currentObject.next };
-    previousObject = { data: currentObject.data, next: tempObject };
+// Solution 0: Iterative Immutable Force
+// This is for comparison. Mostly immutable using the iterative approach.
+const llIterative = function(linkedList) {
+  let nextObject = linkedList.head;
+  let currentObject = { data: nextObject.data, next: null };
+  let previousObject = {};
+  while (nextObject.hasOwnProperty('next') && nextObject.next !== null) {
+    previousObject = { ...currentObject };
+    nextObject = { ...nextObject.next };
+    currentObject = { data: nextObject.data, next: previousObject };
   }
-  return { head: { ...previousObject } };
+  return { head: { ...currentObject } };
 }
-// Tests 0: Immutable
-console.log(llMostlyImmutable({ head: { data: 1, next: { data: 2, next: { data: 3, next: { data: 4, next: null } } } } })); // 4, 3, 2, 1
+// Tests 0: Iterative
+console.log(llIterative({ head: { data: 1, next: { data: 2, next: { data: 3, next: { data: 4, next: null } } } } })); // 4, 3, 2, 1
 
 
 // Solution 1: Brute Force.
 // ll = linkedList
 const llBruteForce = function(linkedList) {
+
   return linkedList;
 }
 // Tests 1: Brute Force
