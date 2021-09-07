@@ -10,8 +10,9 @@
 // objects is usually a lot slower than creating new ones based on the original. I want to compare the performance of mutable vs immutable at the end.
 // Also, just creating a new one as you go is significantly easier.
 
-// Solution 0: Iterative Immutable Force
-// This is for comparison. Mostly immutable using the iterative approach.
+// Solution 1: Iterative and immutable, in one pass, but not in place. O(n)
+// Iteration almost implies that you can't do it in place. You would have to create new keys or something and I don't know if that's truly "in place".
+// ll = linkedList
 const llIterative = function(linkedList) {
   let nextObject = linkedList.head;
   let currentObject = { data: nextObject.data, next: null };
@@ -23,20 +24,32 @@ const llIterative = function(linkedList) {
   }
   return { head: { ...currentObject } };
 }
-// Tests 0: Iterative
+// Tests 1: Iterative
 console.log(llIterative({ head: { data: 1, next: { data: 2, next: { data: 3, next: { data: 4, next: null } } } } })); // 4, 3, 2, 1
 
 
-// Solution 1: Brute Force.
-// ll = linkedList
-const llBruteForce = function(linkedList) {
-
-  return linkedList;
+// Solution 2: Recursion, in one pass, sort of in place. O(n)
+// It's difficult to deal with the head inside the recursion function so I moved that logic to the function invocation.
+const llRecursion = function(linkedList) {
+  if (!linkedList || !linkedList.next) {
+    return linkedList;
+  }
+  let temp = llRecursion(linkedList.next);
+  linkedList.next.next = linkedList;
+  linkedList.next = null;
+  return temp;
 }
-// Tests 1: Brute Force
-// console.log(llBruteForce({ head: { data: 1, next: { data: 2, next: { data: 3, next: { data: 4, next: null } } } } })); // 4, 3, 2, 1
+// Tests 2: Recursion
+const list = { head: { data: 1, next: { data: 2, next: { data: 3, next: { data: 4, next: null } } } } };
+const result = llRecursion(list.head);
+console.log({ head: { ...result } }); // 4, 3, 2, 1
+
+
+// Performance
+// Recursion seems to be consistently a little faster for this simple test.
 
 // What I learned
+// Zounds I thought I knew how recursion works better than I actually did lol 🤣
 
 // Notes
 // https://www.interviewbit.com/problems/reverse-linked-list/
