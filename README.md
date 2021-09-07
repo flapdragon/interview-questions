@@ -27,6 +27,7 @@ These are the famous programming problems. You don't get them asked in JavaScrip
 |[Maximum Product of Triplet](https://www.geeksforgeeks.org/find-maximum-product-of-a-triplet-in-array/)|[Solutions](triplet-product)|
 |[Palindrome Permutation](https://www.lintcode.com/problem/916/)|[Solutions](palindrome-permutation)|
 |[Longest Consecutive Subsequence](https://leetcode.com/problems/longest-consecutive-sequence/)|[Solutions](longest-consecutive-sequence)|
+|[Reverse linked List](https://www.interviewbit.com/problems/reverse-linked-list/)|[Solutions](reverse-linked-list)|
 
 
 ## Concepts
