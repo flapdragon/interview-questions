@@ -55,8 +55,7 @@ console.log(hasPalindrome("tacocat"));
 function hasPalindrome2(str) {
   let charSet = [];
   for (let i = 0, len = str.length; i < len; i++) {
-    const letter = str[i];
-    const letterIndex = charSet.indexOf(letter);
+    const letterIndex = charSet.indexOf(str[i]);
     if (letterIndex > -1) {
       charSet.splice(letterIndex, 1);
     }
