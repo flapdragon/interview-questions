@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Is a Singly Linked List a Palindrome - You can say that again backwards! Now in ES12!</title>
+  <style>
+    .content {
+      margin: 10px 0 0 20px;
+      font-family: Verdana,Geneva,sans-serif;
+      width: 1150px;
+    }
+    pre {
+      padding: 20px;
+      font-size: 16px;
+      background-color: #e0e0e0;
+    }
+    li {
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Linked List Palindrome</h1>
+    <p>Given the head of a singly linked list, return true if it is a palindrome, otherwise false.</p>
+    <ul>
+      <li>JavaScript doesn't have this datatype but we can imitate it with a simple object with each next list member being nested in the previous object.</li>
+      <li>The first and outermost object is the head.</li>
+      <li>Each item should have 2 attributes, data and next.</li>
+      <li>There is no permutation, so we determine palindromocity with the list as is.</li>
+    </ul>
+    <p><strong>Basic Examples:</strong></p>
+    <pre>
+Input: { head: { data: "r", next: { data: "a", next: { data: "d", next: { data: "a", next: { data: "r", next: null } } } } } }
+Output: true
+
+Input: { head: { data: "q", next: { data: "w", next: { data: "d", next: { data: "v", next: null } } } } }
+Output: false
+    </pre>
+  </div>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
